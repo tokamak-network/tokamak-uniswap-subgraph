@@ -34,6 +34,7 @@ export function handlePoolCreated(event: PoolCreated): void {
     // create new bundle for tracking eth price
     let bundle = new Bundle('1')
     bundle.ethPriceUSD = ZERO_BD
+    bundle.tonPriceUSD = ZERO_BD
     bundle.save()
   }
 
