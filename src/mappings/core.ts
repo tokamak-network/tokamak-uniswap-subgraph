@@ -36,7 +36,7 @@ export function handleInitialize(event: Initialize): void {
   // update ETH price now that prices could have changed
   let bundle = Bundle.load('1')
   bundle.ethPriceUSD = getEthPriceInUSD()
-  bundle.tonPriceUSD = getTonPriceInUSD()
+  // bundle.tonPriceUSD = getTonPriceInUSD()
   bundle.save()
 
   updatePoolDayData(event)
@@ -365,7 +365,7 @@ export function handleSwap(event: SwapEvent): void {
 
   // update USD pricing
   bundle.ethPriceUSD = getEthPriceInUSD()
-  bundle.tonPriceUSD = getTonPriceInUSD()
+  // bundle.tonPriceUSD = getTonPriceInUSD()
   bundle.save()
   token0.derivedETH = findEthPerToken(token0 as Token)
   token1.derivedETH = findEthPerToken(token1 as Token)
