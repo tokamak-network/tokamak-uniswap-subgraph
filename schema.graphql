@@ -33,7 +33,7 @@ type Bundle @entity {
   id: ID!
   # price of ETH in usd
   ethPriceUSD: BigDecimal!
-  # tonPriceUSD: BigDecimal!
+  tonPriceUSD: BigDecimal!
 }
 
 type Token @entity {
@@ -68,7 +68,7 @@ type Token @entity {
   # derived price in ETH
   derivedETH: BigDecimal!
   # derived price in TON
-  # derivedTON: BigDecimal!
+  derivedTON: BigDecimal!
   # pools token is in that are white listed for USD pricing
   whitelistPools: [Pool!]!
   # derived fields
