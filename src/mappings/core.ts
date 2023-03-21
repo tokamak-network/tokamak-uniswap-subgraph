@@ -45,8 +45,8 @@ export function handleInitialize(event: Initialize): void {
   // update token prices
   token0.derivedETH = findEthPerToken(token0 as Token)
   token1.derivedETH = findEthPerToken(token1 as Token)
-  token0.derivedTON = findEthPerToken(token0 as Token)
-  token1.derivedTON = findEthPerToken(token1 as Token)
+  // token0.derivedTON = findEthPerToken(token0 as Token)
+  // token1.derivedTON = findEthPerToken(token1 as Token)
   token0.save()
   token1.save()
 }
@@ -369,8 +369,8 @@ export function handleSwap(event: SwapEvent): void {
   bundle.save()
   token0.derivedETH = findEthPerToken(token0 as Token)
   token1.derivedETH = findEthPerToken(token1 as Token)
-  token0.derivedTON = findEthPerToken(token0 as Token)
-  token1.derivedTON = findEthPerToken(token1 as Token)
+  // token0.derivedTON = findEthPerToken(token0 as Token)
+  // token1.derivedTON = findEthPerToken(token1 as Token)
 
   /**
    * Things afffected by new USD rates
