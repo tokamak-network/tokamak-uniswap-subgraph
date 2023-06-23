@@ -33,7 +33,6 @@ type Bundle @entity {
   id: ID!
   # price of ETH in usd
   ethPriceUSD: BigDecimal!
-  tonPriceUSD: BigDecimal!
 }
 
 type Token @entity {

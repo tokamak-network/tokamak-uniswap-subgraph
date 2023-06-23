@@ -13,9 +13,9 @@ dataSources:
     name: Factory
     network: tokamak-goerli
     source:
-      address: '0x56f70e642886aafedc75ed7eefa94dbbebda280e'
+      address: '0x8C2351935011CfEccA4Ea08403F127FB782754AC'
       abi: Factory
-      startBlock: 100
+      startBlock: 7500
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -42,9 +42,9 @@ dataSources:
     name: NonfungiblePositionManager
     network: tokamak-goerli
     source:
-      address: '0x2a3507eDF83338D7952Af30446e1fEBBb8534B5E'
+      address: '0x324d7015E30e7C231e4aC155546b8AbfEAB00977'
       abi: NonfungiblePositionManager
-      startBlock: 200
+      startBlock: 7500
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

@@ -5,9 +5,7 @@ import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
 const WETH_ADDRESS = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-const WETH_GOELRI_ADDRESS = '0xf1b5df98574c18d204fd91ec328f83fca16337be'
 const USDC_WETH_03_POOL = '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
-const USDC_WETH_GOERLI_POOL='0xb598e4b292ccf0f3504e7e68bd190983bb3d3ccb'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
@@ -32,11 +30,7 @@ export let WHITELIST_TOKENS: string[] = [
   '0x956f47f50a910163d8bf957cf5846d573e7f87ca', // FEI
   '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0', // MATIC
   '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9', // AAVE
-  '0xfe2e637202056d30016725477c5da089ab0a043a', // sETH2
-  '0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2', // tokamak-goerli-TON
-  '0x9e5AAC1Ba1a2e6aEd6b32689DFcF62A509Ca96f3', // tokamak-goerli-WTON
-  '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb', // tokamak-goerli-TOS
-  '0x713733bda7F5f9C15fd164242dF4d6292B412bAE', // tokamak-goerli-USDC
+  '0xfe2e637202056d30016725477c5da089ab0a043a' // sETH2
 ]
 
 let STABLE_COINS: string[] = [
@@ -67,17 +61,6 @@ export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
   let usdcPool = Pool.load(USDC_WETH_03_POOL) // dai is token0
   if (usdcPool !== null) {
-    return BigDecimal.fromString('1712')
-  } else {
-    return BigDecimal.fromString('1712')
-  }
-}
-
-export function getTonPriceInUSD(): BigDecimal {
-  // fetch eth prices for each stablecoin
-  let usdcPool = Pool.load(USDC_WETH_03_POOL)
-  let usdcPoolGoerli = Pool.load(USDC_WETH_GOERLI_POOL) // dai is token0
-  if (usdcPool !== null || usdcPoolGoerli !== null) {
     return usdcPool.token0Price
   } else {
     return ZERO_BD
@@ -89,7 +72,7 @@ export function getTonPriceInUSD(): BigDecimal {
  * @todo update to be derived ETH (add stablecoin estimates)
  **/
 export function findEthPerToken(token: Token): BigDecimal {
-  if (token.id == WETH_ADDRESS || token.id == WETH_GOELRI_ADDRESS) {
+  if (token.id == WETH_ADDRESS) {
     return ONE_BD
   }
   let whiteList = token.whitelistPools
@@ -134,17 +117,6 @@ export function findEthPerToken(token: Token): BigDecimal {
     }
   }
   return priceSoFar // nothing was found return 0
-}
-
-export function findTonPerToken(token: Token): BigDecimal {
-  let whiteList = token.whitelistPools
-  // for now just take USD from pool with greatest TVL
-  // need to update this to actually detect best rate based on liquidity distribution
-  let largestLiquidityETH = ZERO_BD
-  let priceSoFar = ZERO_BD
-  let bundle = Bundle.load('1')
-
-  return priceSoFar
 }
 
 /**
