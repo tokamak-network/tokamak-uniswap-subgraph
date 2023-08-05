@@ -54,5 +54,5 @@ export function feeTierToTickSpacing(feeTier: BigInt): BigInt {
     return BigInt.fromI32(1)
   }
 
-  throw Error('Unexpected fee tier')
+  throw new Error('Unexpected fee tier')
 }
