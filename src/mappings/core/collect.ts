@@ -45,11 +45,8 @@ export function handleCollect(event: CollectEvent): boolean {
   token0.txCount = token0.txCount.plus(ONE_BI)
   token1.txCount = token1.txCount.plus(ONE_BI)
   pool.txCount = pool.txCount.plus(ONE_BI)
-
-  let collectID = event.transaction.hash
-    .toString()
-    .concat('-')
-    .concat(event.logIndex.toString())
+  
+  let collectID = (transaction.id + '#' + pool.txCount.toString())
   let collect = new Collect(collectID)
   collect.transaction = transaction.id
   collect.timestamp = event.block.timestamp
