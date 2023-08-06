@@ -34,7 +34,7 @@ export function updateUniswapDayData(event: ethereum.Event): UniswapDayData {
     uniswapDayData.volumeUSDUntracked = ZERO_BD
     uniswapDayData.feesUSD = ZERO_BD
   }
-  uniswapDayData.tvlUSD = uniswap.totalValueLockedUSD
+  uniswapDayData.totalValueLockedUSD = uniswap.totalValueLockedUSD
   uniswapDayData.txCount = uniswap.txCount
   uniswapDayData.save()
   return uniswapDayData as UniswapDayData
@@ -82,7 +82,7 @@ export function updatePoolDayData(event: ethereum.Event): PoolDayData {
   poolDayData.token0Price = pool.token0Price
   poolDayData.token1Price = pool.token1Price
   poolDayData.tick = pool.tick
-  poolDayData.tvlUSD = pool.totalValueLockedUSD
+  poolDayData.totalValueLockedUSD = pool.totalValueLockedUSD
   poolDayData.txCount = poolDayData.txCount.plus(ONE_BI)
   poolDayData.save()
 
@@ -132,7 +132,7 @@ export function updatePoolHourData(event: ethereum.Event): PoolHourData {
   poolHourData.feeGrowthGlobal1X128 = pool.feeGrowthGlobal1X128
   poolHourData.close = pool.token0Price
   poolHourData.tick = pool.tick
-  poolHourData.tvlUSD = pool.totalValueLockedUSD
+  poolHourData.totalValueLockedUSD = pool.totalValueLockedUSD
   poolHourData.txCount = poolHourData.txCount.plus(ONE_BI)
   poolHourData.save()
 
@@ -159,7 +159,7 @@ export function updateTokenDayData(token: Token, event: ethereum.Event): TokenDa
     tokenDayData.volume = ZERO_BD
     tokenDayData.volumeUSD = ZERO_BD
     tokenDayData.feesUSD = ZERO_BD
-    tokenDayData.untrackedVolumeUSD = ZERO_BD
+    tokenDayData.volumeUSDUntracked = ZERO_BD
     tokenDayData.open = tokenPrice
     tokenDayData.high = tokenPrice
     tokenDayData.low = tokenPrice
@@ -201,7 +201,7 @@ export function updateTokenHourData(token: Token, event: ethereum.Event): TokenH
     tokenHourData.token = token.id
     tokenHourData.volume = ZERO_BD
     tokenHourData.volumeUSD = ZERO_BD
-    tokenHourData.untrackedVolumeUSD = ZERO_BD
+    tokenHourData.volumeUSDUntracked = ZERO_BD
     tokenHourData.feesUSD = ZERO_BD
     tokenHourData.open = tokenPrice
     tokenHourData.high = tokenPrice

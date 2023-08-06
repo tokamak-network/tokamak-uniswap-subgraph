@@ -1,5 +1,5 @@
-import { WHITELIST_TOKENS } from './../utils/pricing'
 /* eslint-disable prefer-const */
+import { WHITELIST_TOKENS } from './../utils/pricing'
 import { FACTORY_ADDRESS, ZERO_BI, ONE_BI, ZERO_BD, ADDRESS_ZERO } from './../utils/constants'
 import { Factory } from '../types/schema'
 import { PoolCreated } from '../types/Factory/Factory'
@@ -21,7 +21,7 @@ export function handlePoolCreated(event: PoolCreated): void {
     factory.poolCount = ZERO_BI
     factory.totalVolumeETH = ZERO_BD
     factory.totalVolumeUSD = ZERO_BD
-    factory.untrackedVolumeUSD = ZERO_BD
+    factory.volumeUSDUntracked = ZERO_BD
     factory.totalFeesUSD = ZERO_BD
     factory.totalFeesETH = ZERO_BD
     factory.totalValueLockedETH = ZERO_BD
@@ -61,8 +61,8 @@ export function handlePoolCreated(event: PoolCreated): void {
     token0.derivedETH = ZERO_BD
     token0.volume = ZERO_BD
     token0.volumeUSD = ZERO_BD
+    token0.volumeUSDUntracked = ZERO_BD
     token0.feesUSD = ZERO_BD
-    token0.untrackedVolumeUSD = ZERO_BD
     token0.totalValueLocked = ZERO_BD
     token0.totalValueLockedUSD = ZERO_BD
     token0.totalValueLockedUSDUntracked = ZERO_BD
@@ -86,7 +86,7 @@ export function handlePoolCreated(event: PoolCreated): void {
     token1.derivedETH = ZERO_BD
     token1.volume = ZERO_BD
     token1.volumeUSD = ZERO_BD
-    token1.untrackedVolumeUSD = ZERO_BD
+    token1.volumeUSDUntracked = ZERO_BD
     token1.feesUSD = ZERO_BD
     token1.totalValueLocked = ZERO_BD
     token1.totalValueLockedUSD = ZERO_BD
@@ -127,12 +127,12 @@ export function handlePoolCreated(event: PoolCreated): void {
   pool.totalValueLockedUSD = ZERO_BD
   pool.totalValueLockedETH = ZERO_BD
   pool.totalValueLockedUSDUntracked = ZERO_BD
+  pool.totalValueLockedETHUntracked = ZERO_BD
   pool.volumeToken0 = ZERO_BD
   pool.volumeToken1 = ZERO_BD
   pool.volumeUSD = ZERO_BD
+  pool.volumeUSDUntracked = ZERO_BD
   pool.feesUSD = ZERO_BD
-  pool.untrackedVolumeUSD = ZERO_BD
-
   pool.collectedFeesToken0 = ZERO_BD
   pool.collectedFeesToken1 = ZERO_BD
   pool.collectedFeesUSD = ZERO_BD

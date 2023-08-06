@@ -1,9 +1,38 @@
 /* eslint-disable prefer-const */
-import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
+import { BigDecimal, BigInt, ethereum } from '@graphprotocol/graph-ts'
 import { bigDecimalExponated, safeDiv } from '.'
 import { Tick } from '../types/schema'
 import { Mint as MintEvent } from '../types/templates/Pool/Pool'
 import { ONE_BD, ZERO_BD, ZERO_BI } from './constants'
+import { Pool as PoolABI } from '../types/Factory/Pool'
+import {
+  updateTickDayData
+} from "./intervalUpdates"
+
+export function updateTickFeeVarsAndSave(tick: Tick, event: ethereum.Event): void {
+  let poolAddress = event.address
+  // not all ticks are initialized so obtaining null is expected behavior
+  let poolContract = PoolABI.bind(poolAddress)
+  let tickResult = poolContract.ticks(tick.tickIdx.toI32())
+  tick.feeGrowthOutside0X128 = tickResult.value2
+  tick.feeGrowthOutside1X128 = tickResult.value3
+  tick.save()
+
+  updateTickDayData(tick!, event)
+}
+
+export function loadTickUpdateFeeVarsAndSave(tickId: i32, event: ethereum.Event): void {
+  let poolAddress = event.address
+  let tick = Tick.load(
+    poolAddress
+      .toHexString()
+      .concat('#')
+      .concat(tickId.toString())
+  )
+  if (tick !== null) {
+    updateTickFeeVarsAndSave(tick!, event)
+  }
+}
 
 export function createTick(tickId: string, tickIdx: i32, poolId: string, event: MintEvent): Tick {
   let tick = new Tick(tickId)
@@ -29,7 +58,7 @@ export function createTick(tickId: string, tickIdx: i32, poolId: string, event: 
   tick.volumeToken1 = ZERO_BD
   tick.volumeUSD = ZERO_BD
   tick.feesUSD = ZERO_BD
-  tick.untrackedVolumeUSD = ZERO_BD
+  tick.volumeUSDUntracked = ZERO_BD
   tick.collectedFeesToken0 = ZERO_BD
   tick.collectedFeesToken1 = ZERO_BD
   tick.collectedFeesUSD = ZERO_BD
