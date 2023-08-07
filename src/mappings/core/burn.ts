@@ -35,14 +35,14 @@ export function handleBurn(event: BurnEvent): void {
   pool.txCount = pool.txCount.plus(ONE_BI)
   factory.txCount = factory.txCount.plus(ONE_BI)
 
-  // Update TVL values.
-  let oldPoolTotalValueLockedETH = pool.totalValueLockedETH
-  let oldPoolTVLETHUntracked = pool.totalValueLockedETHUntracked
-  token0.totalValueLocked = token0.totalValueLocked.minus(amount0)
-  token1.totalValueLocked = token1.totalValueLocked.minus(amount1)
-  pool.totalValueLockedToken0 = pool.totalValueLockedToken0.minus(amount0)
-  pool.totalValueLockedToken1 = pool.totalValueLockedToken1.minus(amount1)
-  updateDerivedTVLAmounts(pool as Pool, factory as Factory, oldPoolTotalValueLockedETH, oldPoolTVLETHUntracked)
+  // // Update TVL values.
+  // let oldPoolTotalValueLockedETH = pool.totalValueLockedETH
+  // let oldPoolTVLETHUntracked = pool.totalValueLockedETHUntracked
+  // token0.totalValueLocked = token0.totalValueLocked.minus(amount0)
+  // token1.totalValueLocked = token1.totalValueLocked.minus(amount1)
+  // pool.totalValueLockedToken0 = pool.totalValueLockedToken0.minus(amount0)
+  // pool.totalValueLockedToken1 = pool.totalValueLockedToken1.minus(amount1)
+  // updateDerivedTVLAmounts(pool as Pool, factory as Factory, oldPoolTotalValueLockedETH, oldPoolTVLETHUntracked)
 
   // Pools liquidity tracks the currently active liquidity given pools current tick.
   // We only want to update it on burn if the position being burnt includes the current tick.
