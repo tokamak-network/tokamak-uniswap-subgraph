@@ -6,9 +6,9 @@
   "scripts": {
     "codegen": "graph codegen --output-dir src/types/",
     "build": "graph build",
-    "create": "graph create --node https://thegraph.titan-goerli.tokamak.network/deploy tokamak/titan-nft-subgraph",
-    "deploy-titan-goerli": "graph deploy --node https://thegraph.titan-goerli.tokamak.network/deploy --ipfs https://ipfs.titan-goerli.tokamak.network tokamak/titan-nft-subgraph",
-    "remove": "graph remove --node https://thegraph.titan-goerli.tokamak.network/deploy usgeeus/titan-nft-subgraph",
+    "create": "graph create --node https://thegraph.titan-goerli.tokamak.network/deploy tokamak/titan-uniswap-subgraph",
+    "deploy-titan-goerli": "graph deploy --node https://thegraph.titan-goerli.tokamak.network/deploy --ipfs https://ipfs.titan-goerli.tokamak.network tokamak/titan-uniswap-subgraph",
+    "remove": "graph remove --node https://thegraph.titan-goerli.tokamak.network/deploy cd4761/uniswapv3-tokamak-goerli",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ usgeeus/titan-nft-subgraph",
     "create-local": "graph create --node http://localhost:8020/ usgeeus/titan-uniswap-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ usgeeus/titan-nft-subgraph",
