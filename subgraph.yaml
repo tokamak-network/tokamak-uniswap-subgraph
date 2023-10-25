@@ -13,7 +13,7 @@ dataSources:
     name: Factory
     network: titan
     source:
-      address: '0x8C2351935011CfEccA4Ea08403F127FB782754AC'
+      address: '0x2ae8fee7b4f4ef27088fa8a550c91a045a3128b5'
       abi: Factory
       startBlock: 7500
     mapping:
@@ -42,7 +42,7 @@ dataSources:
     name: NonfungiblePositionManager
     network: titan
     source:
-      address: '0x324d7015E30e7C231e4aC155546b8AbfEAB00977'
+      address: '0x2f54b0f87e7ce7c4fa13bfd21de6d868d1836b8c'
       abi: NonfungiblePositionManager
       startBlock: 7500
     mapping:
