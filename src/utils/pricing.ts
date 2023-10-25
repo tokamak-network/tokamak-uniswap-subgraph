@@ -5,7 +5,7 @@ import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
 const WETH_ADDRESS = '0x4200000000000000000000000000000000000006'
-const USDC_WETH_03_POOL = '0x000be04ecfd9fb06ecc65a3bff2e137c08397ac6'
+const USDC_WETH_03_POOL = '0x8e4e2c9d6f94ff2fba8e9bc36123615b4d1ba840'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
@@ -14,7 +14,7 @@ export let WHITELIST_TOKENS: string[] = [
   '0xfa956eb0c4b3e692ad5a6b2f08170ade55999aca', // TON
   '0x6af3cb766d6cd37449bfd321d961a61b0515c1bc', // TOS
   '0x9c53338c48181035d96884946c34ea81818f743c', // USDC
-  '0xd1e405f1154be88ac84f748c1bce22442b12309f', // USDT
+  '0xd1e405f1154be88ac84f748c1bce22442b12309f' // USDT
 ]
 
 let STABLE_COINS: string[] = []
