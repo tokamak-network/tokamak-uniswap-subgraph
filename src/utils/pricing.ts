@@ -4,17 +4,17 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
-const WETH_ADDRESS = '0x4200000000000000000000000000000000000006'
-const USDC_WETH_03_POOL = '0xac15355e0fc21bc9718d0d1fb6f0f65f45462811'
+const WETH_ADDRESS = '0xfff9976782d46cc05630d1f6ebab18b2324d6b14'
+const USDC_WETH_03_POOL = '0x41918979de21d907c72ccfed77f66582aa2d2475'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
   WETH_ADDRESS, // WETH
-  '0x7c6b91d9be155a6db01f749217d76ff02a7227f2', // TON
-  '0xd08a2917653d4e460893203471f0000826fb4034', // TOS
-  '0x46bbbc5f20093cb53952127c84f1fbc9503bd6d9', // USDC
-  '0x2acc8efed68f07deaad37f57a189677fb5655b46', // USDT
+  '0x79e0d92670106c85e9067b56b8f674340dca0bbd', // WTON
+  '0xff3ef745d9878afe5934ff0b130868afddbc58e8', // TOS
+  '0x693a591a27750eed2a0e14bc73bb1f313116a1cb', // USDC
+  '0x42d3b260c761cd5da022db56fe2f89c4a909b04a', // USDT
 ]
 
 let STABLE_COINS: string[] = []
