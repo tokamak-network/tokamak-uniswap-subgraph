@@ -53,7 +53,7 @@ export function handleInitialize(event: Initialize): void {
   pool.sqrtPrice = event.params.sqrtPriceX96
   pool.tick = BigInt.fromI32(event.params.tick)
   pool.save()
-  
+
   // update token prices
   let token0 = Token.load(pool.token0)!
   let token1 = Token.load(pool.token1)!
@@ -328,7 +328,6 @@ export function handleSwap(event: SwapEvent): void {
   let amount0USD = amount0ETH.times(bundle.ethPriceUSD)
   let amount1USD = amount1ETH.times(bundle.ethPriceUSD)
 
-
   // get amount that should be tracked only - div 2 because cant count both input and output as volume
   let amountTotalUSDTracked = getTrackedAmountUSD(amount0Abs, token0 as Token, amount1Abs, token1 as Token).div(
     BigDecimal.fromString('2')
@@ -534,5 +533,3 @@ export function handleFlash(event: FlashEvent): void {
   pool.feeGrowthGlobal1X128 = feeGrowthGlobal1X128 as BigInt
   pool.save()
 }
-
-

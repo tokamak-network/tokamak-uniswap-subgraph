@@ -7,6 +7,7 @@ import { Pool, Token, Bundle } from '../types/schema'
 import { Pool as PoolTemplate } from '../types/templates'
 import { fetchTokenSymbol, fetchTokenName, fetchTokenTotalSupply, fetchTokenDecimals } from '../utils/token'
 import { log, BigInt, Address } from '@graphprotocol/graph-ts'
+import { ERC20 } from '../types/Factory/ERC20'
 
 export function handlePoolCreated(event: PoolCreated): void {
   // // temp fix
@@ -46,18 +47,20 @@ export function handlePoolCreated(event: PoolCreated): void {
   // fetch info if null
   if (token0 === null) {
     token0 = new Token(event.params.token0.toHexString())
-    token0.symbol = fetchTokenSymbol(event.params.token0)
-    token0.name = fetchTokenName(event.params.token0)
+    let endpoint = ERC20.bind(event.params.token0)
+    let name = endpoint.try_name()
+    let symbol = endpoint.try_symbol()
+    let decimals = endpoint.try_decimals()
+    token0.symbol = symbol.reverted ? 'unknown' : symbol.value
+    token0.name = name.reverted ? 'unknown' : name.value
+    token0.decimals = decimals.reverted ? BigInt.fromI32(18) : BigInt.fromI32(decimals.value)
     token0.totalSupply = fetchTokenTotalSupply(event.params.token0)
-    let decimals = fetchTokenDecimals(event.params.token0)
 
     // bail if we couldn't figure out the decimals
     if (decimals === null) {
       log.debug('mybug the decimal on token 0 was null', [])
       return
     }
-
-    token0.decimals = decimals
     token0.derivedETH = ZERO_BD
     token0.volume = ZERO_BD
     token0.volumeUSD = ZERO_BD
@@ -73,16 +76,20 @@ export function handlePoolCreated(event: PoolCreated): void {
 
   if (token1 === null) {
     token1 = new Token(event.params.token1.toHexString())
-    token1.symbol = fetchTokenSymbol(event.params.token1)
-    token1.name = fetchTokenName(event.params.token1)
+    let endpoint = ERC20.bind(event.params.token1)
+    let name = endpoint.try_name()
+    let symbol = endpoint.try_symbol()
+    let decimals = endpoint.try_decimals()
+    token1.symbol = symbol.reverted ? 'unknown' : symbol.value
+    token1.name = name.reverted ? 'unknown' : name.value
+    token1.decimals = decimals.reverted ? BigInt.fromI32(18) : BigInt.fromI32(decimals.value)
     token1.totalSupply = fetchTokenTotalSupply(event.params.token1)
-    let decimals = fetchTokenDecimals(event.params.token1)
+
     // bail if we couldn't figure out the decimals
     if (decimals === null) {
       log.debug('mybug the decimal on token 0 was null', [])
       return
     }
-    token1.decimals = decimals
     token1.derivedETH = ZERO_BD
     token1.volume = ZERO_BD
     token1.volumeUSD = ZERO_BD
