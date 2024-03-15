@@ -1,12 +1,9 @@
 /* eslint-disable prefer-const */
-import { Bundle, Pool, Token } from '../../types/schema'
 import { BigInt } from '@graphprotocol/graph-ts'
+import { Bundle, Pool, Token } from '../../types/schema'
 import { Initialize } from '../../types/templates/Pool/Pool'
+import { updatePoolDayData, updatePoolHourData } from '../../utils/intervalUpdates'
 import { findEthPerToken, getEthPriceInUSD } from '../../utils/pricing'
-import {
-  updatePoolDayData,
-  updatePoolHourData
-} from '../../utils/intervalUpdates'
 
 export function handleInitialize(event: Initialize): void {
   let pool = Pool.load(event.address.toHexString())!

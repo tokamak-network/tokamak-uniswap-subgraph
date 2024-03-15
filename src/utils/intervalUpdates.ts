@@ -1,20 +1,20 @@
-import { ZERO_BD, ZERO_BI, ONE_BI } from './constants'
+import { ONE_BI, ZERO_BD, ZERO_BI } from './constants'
 /* eslint-disable prefer-const */
+import { ethereum } from '@graphprotocol/graph-ts'
 import {
-  UniswapDayData,
+  Bundle,
   Factory,
   Pool,
   PoolDayData,
+  PoolHourData,
+  Tick,
+  TickDayData,
   Token,
   TokenDayData,
   TokenHourData,
-  Bundle,
-  PoolHourData,
-  TickDayData,
-  Tick
+  UniswapDayData
 } from './../types/schema'
 import { FACTORY_ADDRESS } from './constants'
-import { ethereum } from '@graphprotocol/graph-ts'
 
 /**
  * Tracks global aggregate data over daily windows

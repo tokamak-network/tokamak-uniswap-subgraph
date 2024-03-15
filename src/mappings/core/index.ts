@@ -1,10 +1,10 @@
-import { handleInitialize as handleInitializeHelper } from './initialize'
-import { handleMint as handleMintHelper } from './mint'
+import { Burn, Collect, Flash, Initialize, Mint, Swap } from '../../types/templates/Pool/Pool'
 import { handleBurn as handleBurnHelper } from './burn'
-import { handleSwap as handleSwapHelper } from './swap'
 import { handleCollect as handleCollectHelper } from './collect'
 import { handleFlash as handleFlashHelper } from './flash'
-import { Initialize, Mint, Burn, Swap, Collect, Flash } from '../../types/templates/Pool/Pool'
+import { handleInitialize as handleInitializeHelper } from './initialize'
+import { handleMint as handleMintHelper } from './mint'
+import { handleSwap as handleSwapHelper } from './swap'
 
 // Workaround for limited export types in Assemblyscript.
 export function handleInitialize(event: Initialize): void {

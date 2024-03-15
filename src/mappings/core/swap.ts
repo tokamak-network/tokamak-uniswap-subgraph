@@ -1,18 +1,10 @@
 /* eslint-disable prefer-const */
-import { Bundle, Factory, Pool, Swap, Token } from '../../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
+import { Pool as PoolABI } from '../../types/Factory/Pool'
+import { Bundle, Factory, Pool, Swap, Token } from '../../types/schema'
 import { Swap as SwapEvent } from '../../types/templates/Pool/Pool'
 import { convertTokenToDecimal, loadTransaction } from '../../utils'
 import { FACTORY_ADDRESS, ONE_BI, TWO_BD, ZERO_BD, ZERO_BI } from '../../utils/constants'
-import { Pool as PoolABI } from '../../types/Factory/Pool'
-import { loadTickUpdateFeeVarsAndSave, feeTierToTickSpacing } from "../../utils/tick"
-import {
-  AmountType,
-  findEthPerToken,
-  getAdjustedAmounts,
-  getEthPriceInUSD,
-  sqrtPriceX96ToTokenPrices
-} from '../../utils/pricing'
 import {
   updatePoolDayData,
   updatePoolHourData,
@@ -20,6 +12,14 @@ import {
   updateTokenHourData,
   updateUniswapDayData
 } from '../../utils/intervalUpdates'
+import {
+  AmountType,
+  findEthPerToken,
+  getAdjustedAmounts,
+  getEthPriceInUSD,
+  sqrtPriceX96ToTokenPrices
+} from '../../utils/pricing'
+import { feeTierToTickSpacing, loadTickUpdateFeeVarsAndSave } from '../../utils/tick'
 import { updateDerivedTVLAmounts } from '../../utils/tvl'
 
 export function handleSwap(event: SwapEvent): void {

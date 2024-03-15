@@ -1,10 +1,9 @@
 /* eslint-disable prefer-const */
-import { Bundle, Factory, Mint, Pool, Token, Tick } from '../../types/schema'
 import { BigInt } from '@graphprotocol/graph-ts'
+import { Bundle, Factory, Mint, Pool, Tick, Token } from '../../types/schema'
 import { Mint as MintEvent } from '../../types/templates/Pool/Pool'
 import { convertTokenToDecimal, loadTransaction } from '../../utils'
-import { createTick, updateTickFeeVarsAndSave } from '../../utils/tick'
-import { updateDerivedTVLAmounts } from '../../utils/tvl'
+import { FACTORY_ADDRESS, ONE_BI } from '../../utils/constants'
 import {
   updatePoolDayData,
   updatePoolHourData,
@@ -12,7 +11,8 @@ import {
   updateTokenHourData,
   updateUniswapDayData
 } from '../../utils/intervalUpdates'
-import { FACTORY_ADDRESS, ONE_BI } from '../../utils/constants'
+import { createTick, updateTickFeeVarsAndSave } from '../../utils/tick'
+import { updateDerivedTVLAmounts } from '../../utils/tvl'
 
 export function handleMint(event: MintEvent): void {
   let bundle = Bundle.load('1')!

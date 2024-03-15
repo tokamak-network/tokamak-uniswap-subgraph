@@ -1,4 +1,5 @@
 /* eslint-disable prefer-const */
+import { Address, BigInt, ethereum } from '@graphprotocol/graph-ts'
 import {
   Collect,
   DecreaseLiquidity,
@@ -6,10 +7,9 @@ import {
   NonfungiblePositionManager,
   Transfer
 } from '../types/NonfungiblePositionManager/NonfungiblePositionManager'
-import { Bundle, Position, PositionSnapshot, Token } from '../types/schema'
-import { ADDRESS_ZERO, factoryContract, ZERO_BD, ZERO_BI } from '../utils/constants'
-import { Address, BigInt, ethereum } from '@graphprotocol/graph-ts'
+import { Position, PositionSnapshot, Token } from '../types/schema'
 import { convertTokenToDecimal, loadTransaction } from '../utils'
+import { ADDRESS_ZERO, ZERO_BD, ZERO_BI, factoryContract } from '../utils/constants'
 
 function getPosition(event: ethereum.Event, tokenId: BigInt): Position | null {
   let position = Position.load(tokenId.toString())

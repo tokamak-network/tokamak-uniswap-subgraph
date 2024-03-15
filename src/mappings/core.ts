@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
-import { Bundle, Burn, Factory, Mint, Pool, Swap, Tick, Token } from '../types/schema'
-import { Pool as PoolABI } from '../types/Factory/Pool'
 import { BigDecimal, BigInt, ethereum } from '@graphprotocol/graph-ts'
+import { Pool as PoolABI } from '../types/Factory/Pool'
+import { Bundle, Burn, Factory, Mint, Pool, Swap, Tick, Token } from '../types/schema'
 import {
   Burn as BurnEvent,
   Flash as FlashEvent,
@@ -11,7 +11,6 @@ import {
 } from '../types/templates/Pool/Pool'
 import { convertTokenToDecimal, loadTransaction, safeDiv } from '../utils'
 import { FACTORY_ADDRESS, ONE_BI, ZERO_BD, ZERO_BI } from '../utils/constants'
-import { findEthPerToken, getEthPriceInUSD, getTrackedAmountUSD, sqrtPriceX96ToTokenPrices } from '../utils/pricing'
 import {
   updatePoolDayData,
   updatePoolHourData,
@@ -20,6 +19,7 @@ import {
   updateTokenHourData,
   updateUniswapDayData
 } from '../utils/intervalUpdates'
+import { findEthPerToken, getEthPriceInUSD, getTrackedAmountUSD, sqrtPriceX96ToTokenPrices } from '../utils/pricing'
 import { createTick, feeTierToTickSpacing } from '../utils/tick'
 
 function updateTickFeeVarsAndSave(tick: Tick, event: ethereum.Event): void {
