@@ -1,20 +1,20 @@
 /* eslint-disable prefer-const */
-import { ONE_BD, ZERO_BD, ZERO_BI } from './constants'
-import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
+import { Bundle, Pool, Token } from './../types/schema'
+import { ONE_BD, ZERO_BD, ZERO_BI } from './constants'
 
-const WETH_ADDRESS = '0xfff9976782d46cc05630d1f6ebab18b2324d6b14'
-const USDC_WETH_03_POOL = '0x41918979de21d907c72ccfed77f66582aa2d2475'
+const WETH_ADDRESS = '0x4200000000000000000000000000000000000486'
+const USDC_WETH_03_POOL = '0x59ECBeaF49E0f8971BAD26b80Ea381436cb0E45e'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
   WETH_ADDRESS, // WETH
-  '0x79e0d92670106c85e9067b56b8f674340dca0bbd', // WTON
-  '0xff3ef745d9878afe5934ff0b130868afddbc58e8', // TOS
-  '0x693a591a27750eed2a0e14bc73bb1f313116a1cb', // USDC
-  '0x42d3b260c761cd5da022db56fe2f89c4a909b04a', // USDT
+  '0x4200000000000000000000000000000000000006', // WTON
+  '0xec32659a42904a96d415468d3a213e57b13ee5c0', // TOS
+  '0x69CC158F7E0103880aBC4f7d27daC22C1B62fFe5', // USDC
+  '0xb2d344984f92130AF8925eD283018d21673Bd17d' // USDT
 ]
 
 let STABLE_COINS: string[] = []
