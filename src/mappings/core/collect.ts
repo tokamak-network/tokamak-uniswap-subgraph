@@ -1,10 +1,10 @@
 /* eslint-disable prefer-const */
+import { BigInt } from '@graphprotocol/graph-ts'
 import { Collect, Factory, Pool, Token } from '../../types/schema'
 import { Collect as CollectEvent } from '../../types/templates/Pool/Pool'
 import { convertTokenToDecimal, loadTransaction } from '../../utils'
 import { FACTORY_ADDRESS, ONE_BI } from '../../utils/constants'
 import { AmountType, getAdjustedAmounts } from '../../utils/pricing'
-import { BigInt } from '@graphprotocol/graph-ts'
 import { updateDerivedTVLAmounts } from '../../utils/tvl'
 
 export function handleCollect(event: CollectEvent): boolean {
@@ -45,8 +45,8 @@ export function handleCollect(event: CollectEvent): boolean {
   token0.txCount = token0.txCount.plus(ONE_BI)
   token1.txCount = token1.txCount.plus(ONE_BI)
   pool.txCount = pool.txCount.plus(ONE_BI)
-  
-  let collectID = (transaction.id + '#' + pool.txCount.toString())
+
+  let collectID = transaction.id + '#' + pool.txCount.toString()
   let collect = new Collect(collectID)
   collect.transaction = transaction.id
   collect.timestamp = event.block.timestamp

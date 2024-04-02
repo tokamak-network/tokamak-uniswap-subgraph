@@ -1,11 +1,9 @@
 /* eslint-disable prefer-const */
-import { Bundle, Factory, Pool, Burn, Token, Tick } from '../../types/schema'
 import { BigInt } from '@graphprotocol/graph-ts'
+import { Bundle, Burn, Factory, Pool, Tick, Token } from '../../types/schema'
 import { Burn as BurnEvent } from '../../types/templates/Pool/Pool'
 import { convertTokenToDecimal, loadTransaction } from '../../utils'
 import { FACTORY_ADDRESS, ONE_BI } from '../../utils/constants'
-import { updateDerivedTVLAmounts } from '../../utils/tvl'
-import { updateTickFeeVarsAndSave } from '../../utils/tick'
 import {
   updatePoolDayData,
   updatePoolHourData,
@@ -13,6 +11,7 @@ import {
   updateTokenHourData,
   updateUniswapDayData
 } from '../../utils/intervalUpdates'
+import { updateTickFeeVarsAndSave } from '../../utils/tick'
 
 export function handleBurn(event: BurnEvent): void {
   let bundle = Bundle.load('1')!

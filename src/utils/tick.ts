@@ -1,13 +1,11 @@
 /* eslint-disable prefer-const */
 import { BigDecimal, BigInt, ethereum } from '@graphprotocol/graph-ts'
 import { bigDecimalExponated, safeDiv } from '.'
+import { Pool as PoolABI } from '../types/Factory/Pool'
 import { Tick } from '../types/schema'
 import { Mint as MintEvent } from '../types/templates/Pool/Pool'
 import { ONE_BD, ZERO_BD, ZERO_BI } from './constants'
-import { Pool as PoolABI } from '../types/Factory/Pool'
-import {
-  updateTickDayData
-} from "./intervalUpdates"
+import { updateTickDayData } from './intervalUpdates'
 
 export function updateTickFeeVarsAndSave(tick: Tick, event: ethereum.Event): void {
   let poolAddress = event.address

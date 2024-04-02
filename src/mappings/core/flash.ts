@@ -1,8 +1,8 @@
 /* eslint-disable prefer-const */
+import { BigInt } from '@graphprotocol/graph-ts'
+import { Pool as PoolABI } from '../../types/Factory/Pool'
 import { Pool } from '../../types/schema'
 import { Flash as FlashEvent } from '../../types/templates/Pool/Pool'
-import { Pool as PoolABI } from '../../types/Factory/Pool'
-import { BigInt } from '@graphprotocol/graph-ts'
 
 export function handleFlash(event: FlashEvent): void {
   //@TODO: Fill this in and create Flash events.
