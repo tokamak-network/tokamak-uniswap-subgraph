@@ -11,11 +11,11 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: thanos
+    network: titan-sepolia
     source:
       address: '0x31bceca13c5be57b3677ec116fb38fede7fe1217'
       abi: Factory
-      startBlock: 60800
+      startBlock: 10
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -40,11 +40,11 @@ dataSources:
           handler: handlePoolCreated
   - kind: ethereum/contract
     name: NonfungiblePositionManager
-    network: thanos
+    network: titan-sepolia
     source:
       address: '0x0b4695d5eb7c4e207d1b86cffa9eb39db56413f2'
       abi: NonfungiblePositionManager
-      startBlock: 60800
+      startBlock: 10
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -74,7 +74,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: thanos
+    network: titan-sepolia
     source:
       abi: Pool
     mapping:

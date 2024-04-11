@@ -4,17 +4,17 @@ import { exponentToBigDecimal, safeDiv } from '../utils/index'
 import { Bundle, Pool, Token } from './../types/schema'
 import { ONE_BD, ZERO_BD, ZERO_BI } from './constants'
 
-const WETH_ADDRESS = '0x4200000000000000000000000000000000000486'
-const USDC_WETH_03_POOL = '0x59ECBeaF49E0f8971BAD26b80Ea381436cb0E45e'
+const WETH_ADDRESS = '0x4200000000000000000000000000000000000006'
+const USDC_WETH_03_POOL = '0x898CbF6aA5A7867c0301469c4e0f8DaB4D023E35'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
   WETH_ADDRESS, // WETH
-  '0x4200000000000000000000000000000000000006', // WTON
-  '0xec32659a42904a96d415468d3a213e57b13ee5c0', // TOS
-  '0x69CC158F7E0103880aBC4f7d27daC22C1B62fFe5', // USDC
-  '0xb2d344984f92130AF8925eD283018d21673Bd17d' // USDT
+  '0x7c6b91d9be155a6db01f749217d76ff02a7227f2', // TON
+  '0xd08a2917653d4e460893203471f0000826fb4034', // TOS
+  '0xFF3Ef745D9878AfE5934Ff0b130868AFDDbc58e8', // USDC
+  '0x79E0d92670106c85E9067b56B8F674340dCa0Bbd' // USDT
 ]
 
 let STABLE_COINS: string[] = []
