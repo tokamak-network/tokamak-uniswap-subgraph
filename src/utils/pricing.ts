@@ -5,7 +5,7 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { ONE_BD, ZERO_BD, ZERO_BI } from './constants'
 
 const WETH_ADDRESS = '0x4200000000000000000000000000000000000006'
-const USDC_WETH_03_POOL = '0x898CbF6aA5A7867c0301469c4e0f8DaB4D023E35'
+const USDC_WETH_03_POOL = '0x3cDdC27AC76848E45F74DA37a36DD15058A3CB60'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
@@ -13,7 +13,7 @@ export let WHITELIST_TOKENS: string[] = [
   WETH_ADDRESS, // WETH
   '0x7c6b91d9be155a6db01f749217d76ff02a7227f2', // TON
   '0xd08a2917653d4e460893203471f0000826fb4034', // TOS
-  '0xFF3Ef745D9878AfE5934Ff0b130868AFDDbc58e8', // USDC
+  '0xB79DcFE624D0A69c5c2a206a99F240f1d2Ca1D80', // USDC
   '0x79E0d92670106c85E9067b56B8F674340dCa0Bbd' // USDT
 ]
 
