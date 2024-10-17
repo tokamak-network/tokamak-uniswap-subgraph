@@ -6,8 +6,8 @@
   "scripts": {
     "codegen": "graph codegen --output-dir src/types/",
     "build": "graph build",
-    "create": "graph create --node https://thegraph.titan.tokamak.network/deploy tokamak/titan-uniswap-subgraph",
-    "deploy-titan": "graph deploy --node https://thegraph.titan.tokamak.network/deploy --ipfs https://ipfs.titan.tokamak.network tokamak/titan-uniswap-subgraph",
+    "create": "graph create --node https://graph-node.titan.tokamak.network/deploy tokamak/uniswap",
+    "deploy-titan": "graph deploy --node https://graph-node.titan.tokamak.network/deploy --ipfs https://ipfs.titan.tokamak.network tokamak/uniswap",
     "remove": "graph remove --node https://thegraph.titan.tokamak.network/deploy cd4761/uniswapv3-tokamak-goerli",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ usgeeus/titan-nft-subgraph",
     "create-local": "graph create --node http://localhost:8020/ usgeeus/titan-uniswap-subgraph",
@@ -19,10 +19,13 @@
     "@graphprotocol/graph-cli": "0.53.0",
     "@graphprotocol/graph-ts": "0.30.0"
   },
-  "devDependencies": { "matchstick-as": "0.5.0",    "@typescript-eslint/eslint-plugin": "^2.0.0",
-  "@typescript-eslint/parser": "^2.0.0",
-  "eslint": "^6.2.2",
-  "eslint-config-prettier": "^6.1.0",
-  "prettier": "^1.18.2",
-  "typescript": "^3.5.2" }
+  "devDependencies": {
+    "matchstick-as": "0.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.2"
+  }
 }
